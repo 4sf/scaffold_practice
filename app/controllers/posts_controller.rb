@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  # before_action :find_post, {only: [:show, :edit, :update, :destroy]}
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -7,33 +10,38 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(
-      title: params[:title],
-      content: params[:content]
-    )
-    redirect_to '/'
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to '/'
+    else
+      flash[:alert] = "제목과 내용은 필수야 통스통스야"
+      redirect_to :back
+    end
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
-    @post.update(
-      title: params[:title],
-      content: params[:content]
-    )
-    redirect_to "/posts/show/#{@post.id}"
+    @post.update(post_params)
+    redirect_to @post
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to '/'
+  end
+
+  private
+
+  def find_post
+    @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :content)
   end
 end

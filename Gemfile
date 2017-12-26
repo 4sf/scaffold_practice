@@ -46,4 +46,5 @@ group :development do
   gem 'rails_db'
   gem 'awesome_print'
   gem 'pry-rails'
+  gem 'meta_request'
 end

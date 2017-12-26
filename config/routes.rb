@@ -1,20 +1,28 @@
 Rails.application.routes.draw do
 
+  resources :blogs
   root 'posts#index'
 
-  get 'posts/index'
+  resources :posts
+  # # CREATE (/posts -> 포스트를 만드는거)
+  # get '/posts/new' => 'posts#new'
+  #
+  # post '/posts' => 'posts#create'
+  #
+  # # READ (/posts -> 모두 읽는거, /posts/:id 1개 읽는거)
+  # get '/posts' => 'posts#index'
+  # # get 'posts/show/:id' => 'posts#show'
+  # get '/posts/:id' => 'posts#show'
+  #
+  # # UPDATE (edit -> update)
+  # get '/posts/:id/edit' => 'posts#edit'
+  #
+  # put '/posts/:id' => 'posts#update'
+  #
+  # # DELETE
+  # delete '/posts/:id' => 'posts#destroy'
 
-  get 'posts/new'
 
-  get 'posts/create'
-
-  get 'posts/show/:id' => 'posts#show'
-
-  get 'posts/edit/:id' => 'posts#edit'
-
-  get 'posts/update/:id' => 'posts#update'
-
-  get 'posts/destroy/:id' => 'posts#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -4,6 +4,6 @@
 
 <% @posts.each do |post| %>
   <div>
-    <%= link_to post.title, "/posts/show/#{post.id}" %>
+    <%= link_to post.title, post %>
   </div>
 <% end %>

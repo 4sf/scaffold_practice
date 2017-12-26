@@ -1,6 +1,6 @@
 <h1>새글쓰기</h1>
-<%= form_tag("/posts/create", method: "get") do %>
-  제목 : <%= text_field_tag(:title) %><br>
-  내용 : <%= text_area_tag(:content) %><br>
+<%= form_tag("/posts", method: "post") do %>
+  제목 : <%= text_field_tag("post[title]") %><br>
+  내용 : <%= text_area_tag("post[content]") %><br>
   <%= submit_tag("글쓰기") %>
 <% end %>

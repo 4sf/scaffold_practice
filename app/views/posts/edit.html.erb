@@ -1,6 +1,6 @@
 <h1>수정하기</h1>
-<%= form_tag("/posts/update/#{@post.id}", method: "get") do %>
-  제목 : <%= text_field_tag(:title, @post.title) %><br>
-  내용 : <%= text_area_tag(:content, @post.content, size: "25x10") %><br>
+<%= form_tag("/posts/#{@post.id}", method: "put") do %>
+  제목 : <%= text_field_tag("post[title]", @post.title) %><br>
+  내용 : <%= text_area_tag("post[content]", @post.content, size: "25x10") %><br>
   <%= submit_tag("수정하기") %>
 <% end %>
