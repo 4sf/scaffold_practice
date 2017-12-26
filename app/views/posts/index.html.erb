@@ -1,0 +1,9 @@
+<h1>게시판</h1>
+
+<%= link_to "새글쓰기", "/posts/new"%>
+
+<% @posts.each do |post| %>
+  <div>
+    <%= link_to post.title, "/posts/show/#{post.id}" %>
+  </div>
+<% end %>
